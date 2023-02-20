@@ -1,0 +1,97 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "cis.cisTransitShipments",
+		"type": "card",
+		"title": "In-Transit Shipments",
+		"subTitle": "",
+		"applicationVersion": {
+			"version": "1.0.6"
+		},
+		"tags": {
+			"keywords": [
+				"Component",
+				"Card",
+				"Destinations"
+			]
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/event-app",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://bus-public-transport"
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "cis.cisTransitShipments.View",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+				  "bundleName": "cis.transit.shipments.i18n.i18n"
+				}
+			  },
+			"":{
+				"dataSource": "mainService",
+					"preload": true,
+					"settings": {
+						"defaultBindingMode": "Default" 
+					}
+				}
+		},
+		"dependencies": {
+			"minUI5Version": "1.38",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"config": {
+			"sample": {
+				"stretch": true,
+				"files": [
+					"Card.controller.js"
+				]
+			}
+		}
+	},
+	"sap.card": {
+		"type": "Component",
+        "designtime": "dt/configuration",
+		"configuration": {
+			"destinations": {
+				"myDestination": {
+					"name": "Solace_EventMesh",
+					"defaultUrl":"https://cis-development-cisdev-eventapp-srv.cfapps.us10.hana.ondemand.com/v2/event-app"
+				}
+			}
+		},
+		"header": {
+			"title": "In-Transit Shipments",
+			"status": {
+				"text": ""
+			  },
+			  "icon": {
+				"src": "sap-icon://shipping-status"
+			}
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

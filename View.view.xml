@@ -1,0 +1,49 @@
+<mvc:View xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          width="100%"
+          controllerName="cis.cisTransitShipments.Card">
+   <Table id="idShipmentsTable" inset="false" items="{shipments>/shipmentDetails}">
+   	<headerToolbar>
+			<Toolbar>
+				<content>
+                <ToolbarSpacer /> 
+                    <Button icon="sap-icon://synchronize" text="Synchronize" press=".onPressRefresh"/>
+                </content>
+            </Toolbar>
+            </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="Ship No" />
+            </Column>
+            <Column>
+                <Text text="Shipper Name" />
+            </Column>
+            <Column>
+                <Text text="Shipper Address" />
+            </Column>
+            <Column>
+                <Text text="State" />
+            </Column>
+            <Column>
+                <Text text="Zip code" />
+            </Column>
+            <Column>
+                <Text text="Mode" />
+            </Column>
+         </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{shipments>SHIPNO}" />
+                    <Text text="{shipments>SHIPPERNAME}" />
+                    <Text text="{shipments>SHIPPERADDRESS}" />
+                    <Text text="{shipments>STATE}"/>
+                    <Text text="{shipments>ZIPCODE}"/>
+                    <Text text="{shipments>MODE}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</mvc:View>
